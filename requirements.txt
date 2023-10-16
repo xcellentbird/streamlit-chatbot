@@ -2,3 +2,4 @@ streamlit==1.27.2
 openai==0.28.1
 langchain==0.0.314
 google-api-python-client==2.103.0
+funcy==2.0
