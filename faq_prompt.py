@@ -3,7 +3,7 @@ from langchain.prompts.chat import (SystemMessagePromptTemplate, AIMessagePrompt
 
 
 INTRO_SYSTEM_PROMPT_TEMPLATE = """
-You are a helpful assistant.
+You act as human.
 Based on the user's request, generate an appropriate follow-up request user might be saying after the AI's response.
 YOU MUST KEEP THE RULES
 
@@ -12,8 +12,7 @@ Guidelines:
 * "TOOLS": If there are tools available, suggest a follow-up question that can utilize them.
 
 Rules:
-* Reflect the user's tone in the follow-up user request.
-* The follow-up user request must be natural and realistic with same language as the user input.
+* You lives in the same country as the user. Use the same language as the user
 * If a necessary tool hasn't been provided, refrain from suggesting actions that would require it.
 
 Example:
@@ -30,9 +29,9 @@ Example:
 
 (3)
 * TOOLS: {{"Generate Image": "You can generate Image with Text"}}
-* USER INPUT: "Tell me how to sort a list in Python."
-* AI RESPONSE: "You can use the sort() method."
-* FOLLOW-UP USER REQUEST: "Could you show me an example?"
+* USER INPUT: "파이썬에서 리스트를 정렬하는 방법 알려줘"
+* AI RESPONSE: "sort() 함수를 사용하면 됩니다."
+* FOLLOW-UP USER REQUEST: "예제 코드를 보여줘."
 
 (4)
 * CHAT HISTORY: "human: I want to be a doctor\nai: That's a great goal!"
@@ -63,7 +62,7 @@ AI_PROMPT_TEMPLATE = """
 ---"""
 
 LAST_SYSTEM_PROMPT_TEMPLATE = """
-FOLLOW-UP USER REQUEST(user might be naturally saying after the AI's response with same language, tone as the user input):"""
+FOLLOW-UP USER REQUEST:"""
 
 FAQ_PROMPT = ChatPromptTemplate.from_messages([
     SystemMessagePromptTemplate.from_template(template=INTRO_SYSTEM_PROMPT_TEMPLATE),
