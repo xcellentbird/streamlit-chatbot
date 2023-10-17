@@ -17,8 +17,17 @@ Tools = [
 
 
 class OpenAIChatAgent:
-    def __init__(self, llm_temp: float = 0.5):
-        self.llm_temp = llm_temp
+    system_message = SystemMessage(
+        content="You are a helpful AI assistant."
+    )
+
+    extra_prompt_messages = [
+        SystemMessagePromptTemplate.from_template(
+            """\n---CHAT HISTORY: {chat_history}\n---"""
+        )
+    ]
+
+    def __init__(self):
         self.llm = ChatOpenAI(
             openai_api_key=OPENAI_API_KEY,
             model_name='gpt-3.5-turbo-0613',  # gpt 3.5 turbo snapshot with function calling data
@@ -28,21 +37,8 @@ class OpenAIChatAgent:
             agent=OpenAIMultiFunctionsAgent.from_llm_and_tools(
                 self.llm,
                 Tools,
-                system_message=SystemMessage(
-                    content="""
-                    You are a helpful AI assistant.
-                    """
-                ),
-                extra_prompt_messages=[
-                    SystemMessagePromptTemplate.from_template(
-                        """                        
-                        ---
-                        CHAT HISTORY:
-                        {chat_history}
-                        ---       
-                        """
-                    )
-                ],
+                system_message=self.system_message,
+                extra_prompt_messages=self.extra_prompt_messages,
             ),
             tools=Tools,
         )
