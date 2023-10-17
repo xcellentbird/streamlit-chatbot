@@ -2,7 +2,7 @@ from langchain.prompts.chat import (SystemMessagePromptTemplate, AIMessagePrompt
                                     HumanMessagePromptTemplate, ChatPromptTemplate)
 
 
-SYSTEM_PROMPT_TEMPLATE = """
+INTRO_SYSTEM_PROMPT_TEMPLATE = """
 You are a helpful assistant. You can mimic the user's tone.
 Based on the user's request, generate an appropriate follow-up user request after the AI's response.
 YOU MUST KEEP THE RULES and you can refer to the following guidelines for contents. 
@@ -39,16 +39,12 @@ AI_PROMPT_TEMPLATE = """
 {ai_response}
 ---"""
 
-SYSTEM_RULE_PROMPT_TEMPLATE = """
-(To AI, Do not answer the user's question.)
-"""
-
-FOLLOW_UP_HUMAN_PROMPT_TEMPLATE = """(FOLLOW-UP USER REQUEST)"""
+LAST_SYSTEM_PROMPT_TEMPLATE = """
+FOLLOW-UP USER REQUEST:"""
 
 FAQ_PROMPT = ChatPromptTemplate.from_messages([
     SystemMessagePromptTemplate.from_template(template=SYSTEM_PROMPT_TEMPLATE),
     HumanMessagePromptTemplate.from_template(template=HUMAN_PROMPT_TEMPLATE),
     AIMessagePromptTemplate.from_template(template=AI_PROMPT_TEMPLATE),
-    SystemMessagePromptTemplate.from_template(template=SYSTEM_RULE_PROMPT_TEMPLATE),
-    HumanMessagePromptTemplate.from_template(template=FOLLOW_UP_HUMAN_PROMPT_TEMPLATE),
+    SystemMessagePromptTemplate.from_template(template=LAST_SYSTEM_PROMPT_TEMPLATE),
 ])
