@@ -15,6 +15,7 @@ Rules:
 * Reflect the user's tone and sentence structure to produce a natural-feeling follow-up request.
 * The follow-up user request must be provided in the same language as the last user input.
 * If a necessary tool hasn't been provided, refrain from suggesting actions that would require it.
+* Avoid direct mention of tools in the follow-up user request.
 
 Example:
 (1)
@@ -46,6 +47,7 @@ Example:
 * FOLLOW-UP USER REQUEST: "What's the temperature in winter?"
 
 ---
+ai can use theses tools:
 TOOLS:
 {tools}
 ---
@@ -54,7 +56,7 @@ CHAT HISTORY:
 ---"""
 
 HUMAN_PROMPT_TEMPLATE = """
-(user) {human_input}
+{human_input}
 ---"""
 
 AI_PROMPT_TEMPLATE = """
