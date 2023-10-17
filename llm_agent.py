@@ -1,5 +1,5 @@
 from langchain.agents.agent import AgentExecutor
-from langchain.agents.openai_functions_multi_agent.base import OpenAIMultiFunctionsAgent
+from langchain.agents.openai_functions_agent.base import OpenAIFunctionsAgent
 from langchain.callbacks import StreamlitCallbackHandler
 from langchain.chains import LLMChain
 from langchain.chat_models import ChatOpenAI
@@ -33,7 +33,7 @@ class OpenAIChatAgent:
             model_name='gpt-3.5-turbo-0613',  # gpt 3.5 turbo snapshot with function calling data
         )
         self.agent_executor = AgentExecutor.from_agent_and_tools(
-            agent=OpenAIMultiFunctionsAgent.from_llm_and_tools(
+            agent=OpenAIFunctionsAgent.from_llm_and_tools(
                 self.llm,
                 Tools,
                 system_message=self.system_message,
