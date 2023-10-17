@@ -31,7 +31,6 @@ class OpenAIChatAgent:
         self.llm = ChatOpenAI(
             openai_api_key=OPENAI_API_KEY,
             model_name='gpt-3.5-turbo-0613',  # gpt 3.5 turbo snapshot with function calling data
-            temperature=self.llm_temp,
         )
         self.agent_executor = AgentExecutor.from_agent_and_tools(
             agent=OpenAIMultiFunctionsAgent.from_llm_and_tools(
