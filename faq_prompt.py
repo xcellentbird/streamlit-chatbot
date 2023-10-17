@@ -43,7 +43,7 @@ LAST_SYSTEM_PROMPT_TEMPLATE = """
 FOLLOW-UP USER REQUEST:"""
 
 FAQ_PROMPT = ChatPromptTemplate.from_messages([
-    SystemMessagePromptTemplate.from_template(template=SYSTEM_PROMPT_TEMPLATE),
+    SystemMessagePromptTemplate.from_template(template=INTRO_SYSTEM_PROMPT_TEMPLATE),
     HumanMessagePromptTemplate.from_template(template=HUMAN_PROMPT_TEMPLATE),
     AIMessagePromptTemplate.from_template(template=AI_PROMPT_TEMPLATE),
     SystemMessagePromptTemplate.from_template(template=LAST_SYSTEM_PROMPT_TEMPLATE),
