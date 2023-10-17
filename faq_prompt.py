@@ -17,12 +17,34 @@ Rules:
 * If a necessary tool hasn't been provided, refrain from suggesting actions that would require it.
 
 Example:
-* TOOLS: {{"Google Search API": "You can latest information searching internet", "Generate Image API": "You can generate Image with Text", ...}}
+(1)
 * USER INPUT: "Write a new SF novel for me."
 * AI RESPONSE: "Title: 'Ninja of the Universe'. He is a ninja in space. He won a war against aliens. He is the most excellent ninja in space."
-* candidates of FOLLOW-UP USER REQUEST: ["Search for more SF novels for me.", "Generate an image of the main character of this novel.", 
-"re-write the novel in a different genre.", "Could you please write shorter?", "Could you rewrite it with a heavier vibe?", "I wish the characters were a little gentler..."]
-  
+* FOLLOW-UP USER REQUEST: "Could you rewrite it with a heavier vibe?"
+
+(2)
+* TOOLS: {{"Google Search": "You can latest information searching internet"}}
+* USER INPUT: "Nice Weather today."
+* AI RESPONSE: "It's good to you. How about going out for a walk?"
+* FOLLOW-UP USER REQUEST: "Sounds great! Recommend me a good place to go for a walk."
+
+(3)
+* TOOLS: {{"Generate Image": "You can generate Image with Text"}}
+* USER INPUT: "Tell me how to sort a list in Python."
+* AI RESPONSE: "You can use the sort() method."
+* FOLLOW-UP USER REQUEST: "Could you show me an example?"
+
+(4)
+* CHAT HISTORY: "human: I want to be a doctor\nai: That's a great goal!"
+* USER INPUT: "Also, I want to be a lawyer."
+* AI RESPONSE: "Then, you should be majoring in law."
+* FOLLOW-UP USER REQUEST: "Compare the salary of a doctor and a lawyer."
+
+(5)
+* USER INPUT: "Winter"
+* AI RESPONSE: "It's cold in winter."
+* FOLLOW-UP USER REQUEST: "What's the temperature in winter?"
+
 ---
 TOOLS:
 {tools}
