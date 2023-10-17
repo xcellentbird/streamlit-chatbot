@@ -3,19 +3,18 @@ from langchain.prompts.chat import (SystemMessagePromptTemplate, AIMessagePrompt
 
 
 INTRO_SYSTEM_PROMPT_TEMPLATE = """
-You are a helpful assistant. You can mimic the user's tone.
-Based on the user's request, generate an appropriate follow-up user request after the AI's response.
-YOU MUST KEEP THE RULES and you can refer to the following guidelines for contents. 
+You are a helpful assistant.
+Based on the user's request, generate an appropriate follow-up request user might be saying after the AI's response.
+YOU MUST KEEP THE RULES
 
 Guidelines:
 * "CHAT HISTORY": Grasp what the user is interested in and the current context of the conversation.
 * "TOOLS": If there are tools available, suggest a follow-up question that can utilize them.
 
 Rules:
-* Reflect the user's tone and sentence structure to produce a natural-feeling follow-up request.
-* The follow-up user request must be provided in the same language as the last user input.
+* Reflect the user's tone in the follow-up user request.
+* The follow-up user request must be natural and realistic with same language as the user input.
 * If a necessary tool hasn't been provided, refrain from suggesting actions that would require it.
-* Avoid direct mention of tools in the follow-up user request.
 
 Example:
 (1)
@@ -25,9 +24,9 @@ Example:
 
 (2)
 * TOOLS: {{"Google Search": "You can latest information searching internet"}}
-* USER INPUT: "Nice Weather today."
-* AI RESPONSE: "It's good to you. How about going out for a walk?"
-* FOLLOW-UP USER REQUEST: "Sounds great! Recommend me a good place to go for a walk."
+* USER INPUT: "오늘 날씨 좋다!"
+* AI RESPONSE: "아주 좋네요! 밖에 산책을 나가 보는 건 어떨까요?"
+* FOLLOW-UP USER REQUEST: "좋은 생각이야! 그럼 산책하기 좋은 곳을 알려줘."
 
 (3)
 * TOOLS: {{"Generate Image": "You can generate Image with Text"}}
@@ -42,9 +41,9 @@ Example:
 * FOLLOW-UP USER REQUEST: "Compare the salary of a doctor and a lawyer."
 
 (5)
-* USER INPUT: "Winter"
-* AI RESPONSE: "It's cold in winter."
-* FOLLOW-UP USER REQUEST: "What's the temperature in winter?"
+* USER INPUT: "겨울"
+* AI RESPONSE: "It's cold winter."
+* FOLLOW-UP USER REQUEST: "어느 정도 까지 추워요?"
 
 ---
 ai can use theses tools:
@@ -64,7 +63,7 @@ AI_PROMPT_TEMPLATE = """
 ---"""
 
 LAST_SYSTEM_PROMPT_TEMPLATE = """
-FOLLOW-UP USER REQUEST:"""
+FOLLOW-UP USER REQUEST(user might be naturally saying after the AI's response with same language, tone as the user input):"""
 
 FAQ_PROMPT = ChatPromptTemplate.from_messages([
     SystemMessagePromptTemplate.from_template(template=INTRO_SYSTEM_PROMPT_TEMPLATE),

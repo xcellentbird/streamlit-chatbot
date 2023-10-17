@@ -70,7 +70,7 @@ class GenFAQsLLM:
             openai_api_key=OPENAI_API_KEY,
             model_name='gpt-3.5-turbo-instruct',
             temperature=self.llm_temp,
-            max_tokens=128,
+            max_tokens=64,
         )
 
         self.llm_chain = LLMChain(
